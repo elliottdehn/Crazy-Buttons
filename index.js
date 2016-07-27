@@ -58,8 +58,8 @@ app.post('/neutral', function(req, res) {
 
 app.get('/', function(req, res) {
 	res.statusCode = 200;
-  	res.type('application/json'); // set content-type
-  	res.json({ countValue: count });
+  	res.type('text/plain'); // set content-type
+  	res.send(count+": Current count")
 });
 
 app.listen(port);
