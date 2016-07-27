@@ -15,10 +15,6 @@ var port = (process.env.PORT || 4730);
 var count = 0;
 //For when users just want to spite everyone.
 var disabled = false;
-//for designating the root of our API
-var router = express.Router();
-app.use('/api', router);
-
 
 app.post('/plus', function(req, res) {
 	res.statusCode = 200;
@@ -26,11 +22,11 @@ app.post('/plus', function(req, res) {
 	if(disabled){
 		disabled = false;
 		console.log('incremented - NEUTRALIZED')
-		res.send(count + ': Action NEUTRALIZED'); // send text response
+		res.send(count + ': NEUTRALIZED'); // send text response
 	} else {
 		count++;
 		console.log('incremented')
-  		res.send(count + ': Count was incremented'); // send text response
+  		res.send(count + ': INCREMENTED'); // send text response
 	}
 });
 
@@ -40,11 +36,11 @@ app.post('/minus', function(req, res) {
 	if(disabled){
 		disabled = false;
 		console.log('decremented - NEUTRALIZED');
-		res.send(count + ': Action NEUTRALIZED'); // send text response
+		res.send(count + ': NEUTRALIZED'); // send text response
 	} else {
 		count--;
 		console.log('decremented')
-  		res.send(count + ': Count was decremented'); // send text response
+  		res.send(count + ': DECREMENTED'); // send text response
 	}
 });
 
@@ -53,7 +49,7 @@ app.post('/neutral', function(req, res) {
 	console.log('Next command will be neutralized');
 	res.statusCode = 200;
 	res.type('text/plain'); // set content-type
-  	res.send(count + ': Next action will be neutralized'); // send text response
+  	res.send(count + ': SABOTAGED'); // send text response
 });
 
 app.get('/', function(req, res) {
