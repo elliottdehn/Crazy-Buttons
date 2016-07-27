@@ -25,11 +25,11 @@ app.post('/plus', function(req, res) {
 	res.type('text/plain'); // set content-type
 	if(disabled){
 		disabled = false;
-		console.log('incremented - NEUTRALIZED')
+		console.log('incremented - NEUTRALIZED');
 		res.send(count + ': Action NEUTRALIZED'); // send text response
 	} else {
 		count++;
-		console.log('incremented')
+		console.log('incremented');
   		res.send(count + ': Count was incremented'); // send text response
 	}
 });
@@ -43,7 +43,7 @@ app.post('/minus', function(req, res) {
 		res.send(count + ': Action NEUTRALIZED'); // send text response
 	} else {
 		count--;
-		console.log('decremented')
+		console.log('decremented');
   		res.send(count + ': Count was decremented'); // send text response
 	}
 });
