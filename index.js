@@ -16,7 +16,7 @@ var count = 0;
 //For when users just want to spite everyone.
 var disabled = false;
 
-var actions = ['incremented','decremented','neutralized']
+var actions = ['increment','decrement','neutralize']
 var attributes = ['count','actionPerformed']
 
 app.post('/plus', function(req, res) {
