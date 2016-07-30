@@ -17,18 +17,18 @@ var count = 0;
 var disabled = false;
 
 var actions = ['incremented','decremented','neutralized']
-var attributes = ['count'.'actionPerformed']
+var attributes = ['count','actionPerformed']
 
 app.post('/plus', function(req, res) {
 	res.statusCode = 200;
 	res.type('application/json'); // set content-type
 	if(disabled){
 		disabled = false;
-		console.log('incremented - NEUTRALIZED')
+		console.log('incremented - NEUTRALIZED');
 		res.json({ currentCount: ''+count, actionPerformed: actions[0], success: 'false' });  
 	} else {
 		count++;
-		console.log('incremented')
+		console.log('incremented');
 		res.json({ currentCount: ''+count, actionPerformed: actions[0], success: 'false' }); 
 	}
 });
@@ -42,7 +42,7 @@ app.post('/minus', function(req, res) {
 		res.json({ currentCount: ''+count, actionPerformed: actions[2], success: 'false' });  
 	} else {
 		count--;
-		console.log('decremented')
+		console.log('decremented');
 		res.json({ currentCount: ''+count, actionPerformed: actions[2], success: 'true' });  
 	}
 });
