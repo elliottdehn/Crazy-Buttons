@@ -16,31 +16,34 @@ var count = 0;
 //For when users just want to spite everyone.
 var disabled = false;
 
+var actions = ['incremented','decremented','neutralized']
+var attributes = ['count'.'actionPerformed']
+
 app.post('/plus', function(req, res) {
 	res.statusCode = 200;
-	res.type('text/plain'); // set content-type
+	res.type('application/json'); // set content-type
 	if(disabled){
 		disabled = false;
 		console.log('incremented - NEUTRALIZED')
-		res.send(count + ': NEUTRALIZED'); // send text response
+		res.json({ currentCount: ''+count, actionPerformed: actions[0], success: 'false' });  
 	} else {
 		count++;
 		console.log('incremented')
-  		res.send(count + ': INCREMENTED'); // send text response
+		res.json({ currentCount: ''+count, actionPerformed: actions[0], success: 'false' }); 
 	}
 });
 
 app.post('/minus', function(req, res) {
 	res.statusCode = 200;
-	res.type('text/plain'); // set content-type
+	res.type('application/json'); // set content-type
 	if(disabled){
 		disabled = false;
 		console.log('decremented - NEUTRALIZED');
-		res.send(count + ': NEUTRALIZED'); // send text response
+		res.json({ currentCount: ''+count, actionPerformed: actions[2], success: 'false' });  
 	} else {
 		count--;
 		console.log('decremented')
-  		res.send(count + ': DECREMENTED'); // send text response
+		res.json({ currentCount: ''+count, actionPerformed: actions[2], success: 'true' });  
 	}
 });
 
@@ -48,14 +51,14 @@ app.post('/neutral', function(req, res) {
 	disabled = true;
 	console.log('Next command will be neutralized');
 	res.statusCode = 200;
-	res.type('text/plain'); // set content-type
-  	res.send(count + ': SABOTAGED'); // send text response
+	res.type('application/json'); // set content-type
+  	res.json({ currentCount: ''+count, actionPerformed: actions[1], success: 'true' });  
 });
 
 app.get('/', function(req, res) {
 	res.statusCode = 200;
-  	res.type('text/plain'); // set content-type
-  	res.send(count+": Current count")
+	res.type('application/json'); // set content-type
+  	res.json({ currentCount: ''+count});  
 });
 
 app.listen(port);
