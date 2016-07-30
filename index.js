@@ -16,7 +16,7 @@ var count = 0;
 //For when users just want to spite everyone.
 var disabled = false;
 
-var actions = ['increment','decrement','neutralize']
+var actions = ['plus','minus','neutral']
 var attributes = ['count','actionPerformed']
 
 app.post('/plus', function(req, res) {
@@ -48,6 +48,7 @@ app.post('/minus', function(req, res) {
 });
 
 app.post('/neutral', function(req, res) {
+	//NEUTRAL NEUTRALIZES ITSELF KINDA
 	disabled = true;
 	console.log('Next command will be neutralized');
 	res.statusCode = 200;
@@ -55,7 +56,7 @@ app.post('/neutral', function(req, res) {
   	res.json({ currentCount: ''+count, actionPerformed: actions[1], success: 'true' });  
 });
 
-app.get('/', function(req, res) {
+app.get('/get', function(req, res) {
 	res.statusCode = 200;
 	res.type('application/json'); // set content-type
   	res.json({ currentCount: ''+count});  
