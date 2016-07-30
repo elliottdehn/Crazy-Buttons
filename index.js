@@ -56,7 +56,7 @@ app.post('/neutral', function(req, res) {
   	res.json({ currentCount: ''+count, actionPerformed: actions[1], success: 'true' });  
 });
 
-app.get('/get', function(req, res) {
+app.get('/', function(req, res) {
 	res.statusCode = 200;
 	res.type('application/json'); // set content-type
   	res.json({ currentCount: ''+count});  
