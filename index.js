@@ -29,7 +29,7 @@ app.post('/plus', function(req, res) {
 	} else {
 		count++;
 		console.log('incremented');
-		res.json({ currentCount: ''+count, actionPerformed: actions[0], success: 'false' }); 
+		res.json({ currentCount: ''+count, actionPerformed: actions[0], success: 'true' }); 
 	}
 });
 
